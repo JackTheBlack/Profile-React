@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "antd";
+import { Button, Form, Input } from "antd";
 import { SendOutlined } from "@ant-design/icons";
 
 function ContactMe() {
@@ -21,55 +21,71 @@ function ContactMe() {
       <div class="col-md-4">
         <div className="contact_form">
           <div id="contacts">
-            <form>
+            <Form
+              name="basic"
+              labelCol={{
+                span: 8,
+              }}
+              wrapperCol={{
+                span: 6,
+              }}
+              initialValues={{
+                remember: true,
+              }}
+            >
               <legend>Contact Form</legend>
-              <label>Name *</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder
-                id="name"
-                required
-                aria-invalid="false"
-              />
-              <p className="help-block"></p>
-              <label>Phone *</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder
-                id="telefono"
-                required
-              />
-              <p className="help-block"></p>
-              <label>E-Mail *</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder
-                id="email"
-                required
-              />
-              <p className="help-block"></p>
-              <label>Message *</label>
-              <textarea
-                rows="4"
-                col="100"
-                class="form-control"
-                placeholder
-                id="message"
-                required
-              ></textarea>
-              <p className="help-block"></p>
-              <Button
-                type="danger"
-                shape="round"
-                size="small"
-                icon={<SendOutlined />}
+              <Form.Item
+                label="Name"
+                name="Name"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your name!",
+                  },
+                ]}
               >
-                Send
-              </Button>
-            </form>
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="E-mail"
+                name="E-mail"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your e-mail!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                name="Message"
+                label="Message"
+                rules={[
+                  { required: true, message: "Please input your e-mail!" },
+                ]}
+              >
+                <Input.TextArea />
+              </Form.Item>
+
+              <Form.Item
+                wrapperCol={{
+                  offset: 8,
+                  span: 8,
+                }}
+              >
+                <Button
+                  shape="round"
+                  icon={<SendOutlined />}
+                  type="danger"
+                  htmlType="submit"
+                >
+                  Send
+                </Button>
+              </Form.Item>
+            </Form>
           </div>
         </div>
       </div>
