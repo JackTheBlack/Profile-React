@@ -1,8 +1,31 @@
 import React, { useState } from "react";
 import { Button, Form, Input } from "antd";
 import { SendOutlined } from "@ant-design/icons";
+import emailjs from "emailjs-com";
 
 function ContactMe() {
+  function sendEmail(e) {
+    e.preventDefault();
+    console.log("Apretado");
+    emailjs
+      .sendForm(
+        "service_efrjbdt",
+        "template_rtlpgao",
+        e.target,
+        "user_Wct77fFHl947KdENU084x"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    e.target.reset();
+    return 0;
+  }
+
   return (
     <div>
       <h2>Contact</h2>
@@ -21,71 +44,42 @@ function ContactMe() {
       <div class="col-md-4">
         <div className="contact_form">
           <div id="contacts">
-            <Form
-              name="basic"
-              labelCol={{
-                span: 8,
-              }}
-              wrapperCol={{
-                span: 6,
-              }}
-              initialValues={{
-                remember: true,
-              }}
-            >
-              <legend>Contact Form</legend>
-              <Form.Item
-                label="Name"
-                name="Name"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your name!",
-                  },
-                ]}
+            <form className="contact-form" onSubmit={sendEmail}>
+              <input type="hidden" name="contact_number" />
+              <label>Name: </label>
+              <input type="text" name="user_name" /> <br />
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input
+                  type="email"
+                  name="user_name"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="name@example.com"
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Message :</label>
+                <textarea
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                ></textarea>
+              </div>
+              <label>Message:</label>
+              <textarea name="message" />
+              <br />
+              <Button
+                type="danger"
+                shape="round"
+                size="small"
+                icon={<SendOutlined />}
+                htmlType="submit"
               >
-                <Input />
-              </Form.Item>
-
-              <Form.Item
-                label="E-mail"
-                name="E-mail"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your e-mail!",
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
-
-              <Form.Item
-                name="Message"
-                label="Message"
-                rules={[
-                  { required: true, message: "Please input your e-mail!" },
-                ]}
-              >
-                <Input.TextArea />
-              </Form.Item>
-
-              <Form.Item
-                wrapperCol={{
-                  offset: 8,
-                  span: 8,
-                }}
-              >
-                <Button
-                  shape="round"
-                  icon={<SendOutlined />}
-                  type="danger"
-                  htmlType="submit"
-                >
-                  Send
-                </Button>
-              </Form.Item>
-            </Form>
+                Send
+              </Button>
+            </form>
           </div>
         </div>
       </div>
