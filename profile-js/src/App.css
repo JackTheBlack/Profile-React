@@ -1,0 +1,66 @@
+.Body {
+  text-align: center;
+}
+
+.App {
+  text-align: center;
+  background-image: "https://webunwto.s3.eu-west-1.amazonaws.com/2019-09/HIGHLIGHTS-2019-edition.jpg";
+  background-position: "center";
+  background-repeat: "no-repeat";
+  size: cover;
+}
+
+.header-parallax {
+  height: 600px;
+}
+
+.parallax-img {
+  height: 400px;
+}
+
+.Section {
+  height: 50px;
+  width: 50px;
+}
+
+.div_space {
+  background-image: url("https://www.ungs.edu.ar/wp-content/uploads/2018/05/IDH-5ok.jpg");
+
+  background-position: "center";
+  background-repeat: "no-repeat";
+}
+
+.headers {
+  color: white;
+}
+
+.App-logo {
+  height: 30vmin;
+  width: 30vmin;
+  pointer-events: none;
+  border-radius: 100px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logos {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  justify-content: center;
+  align-items: center;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
