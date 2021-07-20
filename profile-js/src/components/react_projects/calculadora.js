@@ -36,6 +36,8 @@ function Calculadora() {
         setCount(count + 1);
         setMostrar(1);
         break;
+      default:
+        console.log();
     }
   };
 
@@ -86,7 +88,7 @@ function Calculadora() {
             >
               +
             </Button>
-            <a> </a>
+            {"  "}
             <Button
               data-testid="subtractButton"
               className="operationFont"
@@ -96,7 +98,7 @@ function Calculadora() {
             >
               -
             </Button>
-            <a> </a>
+            {"  "}
             <Button
               border="1px"
               data-testid="multiplyButton"
@@ -106,7 +108,7 @@ function Calculadora() {
             >
               *
             </Button>
-            <a> </a>
+            {"  "}
             <Button
               data-testid="divideButton"
               id="deivision"

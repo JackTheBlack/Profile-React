@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Form, Input } from "antd";
+import React from "react";
+import { Button } from "antd";
 import { SendOutlined } from "@ant-design/icons";
 import emailjs from "emailjs-com";
 
@@ -67,8 +67,6 @@ function ContactMe() {
                   rows="3"
                 ></textarea>
               </div>
-              <label>Message:</label>
-              <textarea name="message" />
               <br />
               <Button
                 type="danger"

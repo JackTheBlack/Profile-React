@@ -1,5 +1,5 @@
-import React, { Component, useState, useEffect } from "react";
-import { Button, Table, Tag, Space } from "antd";
+import React, { useState, useEffect } from "react";
+import { Button } from "antd";
 import "antd/dist/antd.css";
 import ARTICLES from "../../data/Articles.js";
 /*
@@ -13,8 +13,6 @@ import ARTICLES from "../../data/Articles.js";
 function SORT() {
   const [aux, setAux] = useState([...ARTICLES]);
   const [filter, setFilter] = useState("upvoted");
-
-  const { Column } = Table;
 
   const upVoted = () => {
     setFilter(" ");
@@ -40,7 +38,7 @@ function SORT() {
       setAux(newArr);
     }
     setFilter(" ");
-  }, [filter, aux, ARTICLES]);
+  }, [filter, aux]);
 
   return (
     <div className="component">

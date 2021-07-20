@@ -1,22 +1,16 @@
-import logo from "./logo.svg";
-import profile from "./assets/profile.jpg";
+//import profile from "./assets/profile.jpg";
 import div_photo1 from "./assets/div_photo1.jpg";
 import { Parallax } from "react-parallax";
 import "./App.css";
 import FOOTERLIST from "./components/FooterList.js";
 import ContactMe from "./components/ContactMe/ContactMe.js";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Slider from "./components/react_projects/slider_projects";
 
 const profile_photo =
   "https://media-exp3.licdn.com/dms/image/C4D35AQEguHiBwSdYIQ/profile-framedphoto-shrink_200_200/0/1619635511019?e=1626742800&v=beta&t=cMskPrPSHCi2q1zWQF7iRGoZoDZNiNfNOxkMCllJ5us";
 
 function App() {
-  const [offsetY, setOffsetY] = useState(0);
-  const handleScroll = () => {
-    setOffsetY(window.pageYOffset);
-  };
-
   return (
     <div className="App">
       >
