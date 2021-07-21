@@ -44,7 +44,7 @@ function App() {
           </Parallax>
         </div>
 
-        <div calssName="Contact_home">
+        <div className="Contact_home">
           <ContactMe />
         </div>
       </body>

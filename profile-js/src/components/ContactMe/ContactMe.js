@@ -63,8 +63,9 @@ function ContactMe() {
                 <label for="exampleFormControlTextarea1">Message :</label>
                 <textarea
                   class="form-control"
-                  id="exampleFormControlTextarea1"
+                  id="message"
                   rows="3"
+                  name="message"
                 ></textarea>
               </div>
               <br />
