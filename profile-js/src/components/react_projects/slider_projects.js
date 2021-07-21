@@ -27,6 +27,7 @@ function Slider() {
 
   return (
     <div className="component">
+      <legend>Api React Examples</legend>
       <Button
         type="Primary"
         data-testid="button-prev"
@@ -44,7 +45,7 @@ function Slider() {
         Calculadora
       </Button>
       <div className="container">
-        {showCalculadora ? <Calculadora /> : null}
+        {showCalculadora ? <Calculadora className="calculator" /> : null}
         {showSort ? <SORT /> : null}
       </div>
     </div>

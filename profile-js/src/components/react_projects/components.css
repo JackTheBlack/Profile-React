@@ -1,6 +1,8 @@
-.Component {
+.component {
   justify-content: center;
   align-items: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 .Table {
@@ -11,6 +13,8 @@
 }
 
 .container {
+  padding-top: 20px;
+  padding-bottom: 16px;
   text-align: center;
   justify-content: center;
   align-items: center;

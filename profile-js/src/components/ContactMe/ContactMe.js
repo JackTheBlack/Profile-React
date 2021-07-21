@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "antd";
 import { SendOutlined } from "@ant-design/icons";
 import emailjs from "emailjs-com";
+import "./style.css";
 
 function ContactMe() {
   function sendEmail(e) {
@@ -27,9 +28,9 @@ function ContactMe() {
   }
 
   return (
-    <div>
+    <div className="Contact">
       <h2>Contact</h2>
-      <div class="col-md-4 col-md-offset-2" className="Contact">
+      <div>
         "Mail: Ascona.Nicolas@gmail.com"
         <br></br>
         Phone:+54 011-15-69433706
