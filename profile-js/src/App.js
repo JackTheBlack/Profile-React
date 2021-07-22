@@ -45,7 +45,6 @@ function App() {
         </div>
 
         <div className="Contact_home">
-          <ApiRest />
           <ContactMe />
         </div>
       </body>

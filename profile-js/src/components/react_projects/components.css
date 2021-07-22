@@ -6,10 +6,24 @@
 }
 
 .Table {
+  padding-top: 5 px;
+  padding-bottom: 50px;
   text-align: center;
   justify-content: center;
   margin: 0 auto;
   align-items: center;
+}
+
+.tr {
+  justify-content: center;
+  padding-top: 5 px;
+  padding-bottom: 50px;
+}
+
+.td {
+  justify-content: center;
+  padding-left: 10 px;
+  padding-right: 10 px;
 }
 
 .container {

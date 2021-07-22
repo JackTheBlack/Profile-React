@@ -1,12 +1,19 @@
 import react, { useEffect, useState } from "react";
 import axios from "axios";
-import { Table, Button } from "antd";
+import { Table, Tag, Space } from "antd";
+import {
+  SendOutlined,
+  DeleteOutlined,
+  FileSyncOutlined,
+} from "@ant-design/icons";
 
 function ApIRest() {
-  const [contrato, setContrato] = useState("");
+  const { Column, ColumnGroup } = Table;
+
+  const [contrato, setContrato] = useState([]);
+  const [stringContrato, setStringContrato] = useState("");
   const BaseUrl = "http://acs.e-nigma.online//contracts";
   let jsonStr = "";
-  let rest;
   let formData = new FormData();
   const getContract5 = async () => {
     try {
@@ -14,8 +21,9 @@ function ApIRest() {
         url: BaseUrl + "/5",
         method: "GET",
       });
-      jsonStr = JSON.stringify(response.data.msg);
-      setContrato(jsonStr);
+      jsonStr = JSON.stringify(response.data.data);
+      setStringContrato(jsonStr);
+      setContrato([...JSON.parse(jsonStr)]);
     } catch (e) {
       console.log(e);
     }
@@ -43,7 +51,26 @@ function ApIRest() {
 
   return (
     <div>
-      <p> {contrato}</p>
+      <Table className="Table" dataSource={contrato}>
+        <Column title="Id" dataIndex="id" key="id" />
+
+        <Column title="Open" dataIndex="open" key="open" />
+        <Column title="Close" dataIndex="close" key="close" />
+        <Column
+          title="Action"
+          key="action"
+          render={(text, record) => (
+            <Space size="middle">
+              <a>
+                <FileSyncOutlined />{" "}
+              </a>
+              <a>
+                <DeleteOutlined />
+              </a>
+            </Space>
+          )}
+        />
+      </Table>
     </div>
   );
 }
