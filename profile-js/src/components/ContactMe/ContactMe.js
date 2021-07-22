@@ -3,6 +3,7 @@ import { Button } from "antd";
 import { SendOutlined } from "@ant-design/icons";
 import emailjs from "emailjs-com";
 import "./style.css";
+import ContactForm from "./contactForm.js";
 
 function ContactMe() {
   function sendEmail(e) {
@@ -45,41 +46,7 @@ function ContactMe() {
       <div class="col-md-4">
         <div className="contact_form">
           <div id="contacts">
-            <form className="contact-form" onSubmit={sendEmail}>
-              <input type="hidden" name="contact_number" />
-              <label>Name: </label>
-              <input type="text" name="user_name" /> <br />
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Email address</label>
-                <input
-                  type="email"
-                  name="user_name"
-                  class="form-control"
-                  id="exampleFormControlInput1"
-                  placeholder="name@example.com"
-                />
-              </div>
-              <br />
-              <div class="form-group">
-                <label for="exampleFormControlTextarea1">Message :</label>
-                <textarea
-                  class="form-control"
-                  id="message"
-                  rows="3"
-                  name="message"
-                ></textarea>
-              </div>
-              <br />
-              <Button
-                type="danger"
-                shape="round"
-                size="small"
-                icon={<SendOutlined />}
-                htmlType="submit"
-              >
-                Send
-              </Button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </div>

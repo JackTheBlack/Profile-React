@@ -2,10 +2,11 @@
 import div_photo1 from "./assets/div_photo1.jpg";
 import { Parallax } from "react-parallax";
 import "./App.css";
-import FOOTERLIST from "./components/FooterList.js";
+import FOOTERLIST from "./components/Footer/FooterList.js";
 import ContactMe from "./components/ContactMe/ContactMe.js";
 import React from "react";
 import Slider from "./components/react_projects/slider_projects";
+import ApiRest from "./components/react_projects/Api.js";
 
 const profile_photo =
   "https://media-exp3.licdn.com/dms/image/C4D35AQEguHiBwSdYIQ/profile-framedphoto-shrink_200_200/0/1619635511019?e=1626742800&v=beta&t=cMskPrPSHCi2q1zWQF7iRGoZoDZNiNfNOxkMCllJ5us";
@@ -13,7 +14,6 @@ const profile_photo =
 function App() {
   return (
     <div className="App">
-      >
       <header className="App-header">
         <title>My Profile</title>
       </header>
@@ -45,6 +45,7 @@ function App() {
         </div>
 
         <div className="Contact_home">
+          <ApiRest />
           <ContactMe />
         </div>
       </body>

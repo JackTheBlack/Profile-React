@@ -1,5 +1,5 @@
 import React from "react";
-import MEDIA from "../data/MediaList.js";
+import MEDIA from "../../data/MediaList.js";
 import "./footer.css";
 function FooterList() {
   return (

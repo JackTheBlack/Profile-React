@@ -27,7 +27,7 @@ function Slider() {
 
   return (
     <div className="component">
-      <legend>Api React Examples</legend>
+      <legend>App React Examples</legend>
       <Button
         type="Primary"
         data-testid="button-prev"
