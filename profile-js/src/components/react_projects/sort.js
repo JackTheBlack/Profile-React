@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "antd";
 import "antd/dist/antd.css";
 import ARTICLES from "../../data/Articles.js";

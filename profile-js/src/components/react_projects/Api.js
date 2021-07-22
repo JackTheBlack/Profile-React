@@ -1,20 +1,15 @@
-import react, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { Table, Tag, Space } from "antd";
-import {
-  SendOutlined,
-  DeleteOutlined,
-  FileSyncOutlined,
-} from "@ant-design/icons";
+import { Table, Space } from "antd";
+import { DeleteOutlined, FileSyncOutlined } from "@ant-design/icons";
 
 function ApIRest() {
-  const { Column, ColumnGroup } = Table;
+  const { Column } = Table;
 
   const [contrato, setContrato] = useState([]);
-  const [stringContrato, setStringContrato] = useState("");
   const BaseUrl = "http://acs.e-nigma.online//contracts";
   let jsonStr = "";
-  let formData = new FormData();
+  //let formData = new FormData();
   const getContract5 = async () => {
     try {
       const response = await axios({
@@ -22,14 +17,14 @@ function ApIRest() {
         method: "GET",
       });
       jsonStr = JSON.stringify(response.data.data);
-      setStringContrato(jsonStr);
+
       setContrato([...JSON.parse(jsonStr)]);
     } catch (e) {
       console.log(e);
     }
   };
 
-  const getContract = () => {
+  /*  const getContract = () => {
     const url = "http://acs.e-nigma.online//contracts/5";
     axios
       .get(url)
@@ -43,7 +38,7 @@ function ApIRest() {
         console.log("error");
       });
   };
-
+*/
   useEffect(() => {
     const response = getContract5();
     //  console.log(response.data);

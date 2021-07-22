@@ -1,4 +1,3 @@
-import react from "react";
 import { Button } from "antd";
 import { SendOutlined } from "@ant-design/icons";
 import emailjs from "emailjs-com";
