@@ -1,44 +1,39 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Table, Space } from "antd";
+import { Button } from "antd";
 import { DeleteOutlined, FileSyncOutlined } from "@ant-design/icons";
 
 function ApIRest() {
-  const { Column } = Table;
-
   const [contrato, setContrato] = useState([]);
-  const BaseUrl = "http://acs.e-nigma.online//contracts";
-  let jsonStr = "";
+
+  //let jsonStr = "";
   //let formData = new FormData();
   const getContract5 = async () => {
     try {
       const response = await axios({
-        url: BaseUrl + "/5",
+        url: "https://60f96cb0ee56ef0017975dce.mockapi.io/contracts",
         method: "GET",
       });
-      jsonStr = JSON.stringify(response.data.data);
-
-      setContrato([...JSON.parse(jsonStr)]);
+      //  jsonStr = JSON.stringify(response.data);
+      setContrato([...response.data]);
     } catch (e) {
       console.log(e);
     }
   };
 
-  /*  const getContract = () => {
-    const url = "http://acs.e-nigma.online//contracts/5";
-    axios
-      .get(url)
-      .then((response) => {
-        formData.append("text", response.data);
-        jsonStr = JSON.stringify(response.data.msg);
-        setContrato(jsonStr);
-        //  fs.writeFile('consignas.JSON', response.data,finished());
-      })
-      .catch((error) => {
-        console.log("error");
-      });
+  const handleDeleteButton = (id) => {
+    // Simple DELETE request with axios
+
+    try {
+      axios
+        .delete("https://60f96cb0ee56ef0017975dce.mockapi.io/contracts/" + id)
+        .then(() => alert("ID " + id + "eliminado con exito"));
+    } catch (e) {
+      console.log("");
+    }
+    getContract5();
   };
-*/
+
   useEffect(() => {
     const response = getContract5();
     //  console.log(response.data);
@@ -46,26 +41,47 @@ function ApIRest() {
 
   return (
     <div>
-      <Table className="Table" dataSource={contrato}>
-        <Column title="Id" dataIndex="id" key="id" />
-
-        <Column title="Open" dataIndex="open" key="open" />
-        <Column title="Close" dataIndex="close" key="close" />
-        <Column
-          title="Action"
-          key="action"
-          render={(text, record) => (
-            <Space size="middle">
-              <a>
-                <FileSyncOutlined />{" "}
-              </a>
-              <a>
-                <DeleteOutlined />
-              </a>
-            </Space>
-          )}
-        />
-      </Table>
+      <table>
+        <tr>
+          <th>Id</th>
+          <th>Open</th>
+          <th>Name</th>
+          <th>Detail</th>
+        </tr>
+        {contrato &&
+          contrato.map((i, index) => {
+            return (
+              <tr>
+                <td>{i.id}</td> <td>{i.name}</td>
+                <td>{i.detail}</td>
+                <tr>
+                  <td>
+                    {" "}
+                    <Button
+                      type="primary"
+                      size="small"
+                      icon={<FileSyncOutlined />}
+                      htmlType="submit"
+                    >
+                      {" "}
+                    </Button>{" "}
+                  </td>
+                  <td>
+                    {" "}
+                    <Button
+                      type="danger"
+                      size="small"
+                      icon={<DeleteOutlined />}
+                      onClick={() => handleDeleteButton(i.id)}
+                    >
+                      {" "}
+                    </Button>{" "}
+                  </td>
+                </tr>
+              </tr>
+            );
+          })}
+      </table>
     </div>
   );
 }
