@@ -1,8 +1,11 @@
-import { Button } from "antd";
+import { Button, Form } from "antd";
 import { SendOutlined } from "@ant-design/icons";
 import emailjs from "emailjs-com";
+import React, { useState } from "react";
 
 function ContactForm() {
+  const { Item } = Form;
+
   function sendEmail(e) {
     e.preventDefault();
     console.log("Apretado");
@@ -25,31 +28,37 @@ function ContactForm() {
     return 0;
   }
 
+  const layout = {
+    labelCol: {
+      span: 6,
+    },
+    wrapperCol: {
+      span: 12,
+    },
+  };
+
   return (
-    <div>
-      <form className="contact-form" onSubmit={sendEmail}>
-        <label>Name: </label>
-        <input type="text" name="user_name" /> <br />
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Email address</label>
-          <input
-            type="email"
-            name="user_email"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="name@example.com"
-          />
-        </div>
+    <div className="-form">
+      <form onSubmit={sendEmail}>
+        <label className="col-25">Name: </label>
+        <input className="col-75" type="text" name="user_name" /> <br />
+        <label className="col-25">*Email:</label>
+        <input
+          className="col-75"
+          required="true"
+          type="email"
+          name="user_email"
+          placeholder="name@example.com"
+        />
         <br />
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Message :</label>
-          <textarea
-            class="form-control"
-            id="message"
-            rows="3"
-            name="message"
-          ></textarea>
-        </div>
+        <label className="col-25">Message:</label>
+        <textarea
+          className="col-75"
+          class="form-control"
+          id="message"
+          rows="3"
+          name="message"
+        ></textarea>
         <br />
         <Button
           type="danger"
