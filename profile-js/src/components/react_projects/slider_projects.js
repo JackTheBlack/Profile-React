@@ -29,7 +29,7 @@ function Slider() {
     setDisableCalculator(true);
     setDisableSort(false);
     setShowApi(false);
-    setDisableShowApi(true);
+    setDisableShowApi(false);
   };
 
   const sort = () => {

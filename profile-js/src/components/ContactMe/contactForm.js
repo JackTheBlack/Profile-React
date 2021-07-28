@@ -1,11 +1,9 @@
-import { Button, Form } from "antd";
+import { Button } from "antd";
 import { SendOutlined } from "@ant-design/icons";
 import emailjs from "emailjs-com";
-import React, { useState } from "react";
+import React from "react";
 
 function ContactForm() {
-  const { Item } = Form;
-
   function sendEmail(e) {
     e.preventDefault();
     console.log("Apretado");
@@ -28,14 +26,14 @@ function ContactForm() {
     return 0;
   }
 
-  const layout = {
+  /*  const layout = {
     labelCol: {
       span: 6,
     },
     wrapperCol: {
       span: 12,
     },
-  };
+  }; */
 
   return (
     <div className="-form">

@@ -76,8 +76,8 @@ function ApIRest() {
       <table>
         <tr>
           <th>Id</th>
-          <th>Open</th>
           <th>Name</th>
+          <th>Document</th>
           <th>Detail</th>
         </tr>
         {contrato &&
