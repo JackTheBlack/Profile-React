@@ -3,6 +3,7 @@ import axios from "axios";
 import { Form, Input, Button, Modal } from "antd";
 import { DeleteOutlined, FileSyncOutlined } from "@ant-design/icons";
 import FormAdd from "./AddApiForm.js";
+import "./components.css";
 
 function ApIRest() {
   ////////////////////////////////////////////////////////////////
@@ -58,27 +59,44 @@ function ApIRest() {
     try {
       axios
         .delete("https://60f96cb0ee56ef0017975dce.mockapi.io/contracts/" + id)
-        .then(() => alert("ID " + id + "eliminado con exito"));
+        .then(() => alert("ID " + id + " eliminado con exito"));
     } catch (e) {
       console.log("");
     }
     getContract5();
   };
 
+  const handleUpdate = () => {
+    try {
+      axios
+        .put(
+          "https://60f96cb0ee56ef0017975dce.mockapi.io/contracts/" + id,
+          client
+        )
+        .then(() => alert("ID " + id + " actualizado con exito"));
+    } catch (e) {
+      console.log("");
+    }
+    setModalUpdate(false);
+  };
+
   useEffect(() => {
-    const response = getContract5();
+    if (!modalUpdate) {
+      const response = getContract5();
+    }
+
     //  console.log(response.data);
   });
 
   return (
-    <div>
+    <div className="component">
       <FormAdd />
-      <table>
+      <table className="Table">
         <tr>
           <th>Id</th>
           <th>Name</th>
           <th>Document</th>
-          <th>Detail</th>
+          <th>Action</th>
         </tr>
         {contrato &&
           contrato.map((i, index) => {
@@ -123,7 +141,9 @@ function ApIRest() {
           visible={modalUpdate}
           footer={[
             <Button onClick={() => setModalUpdate(false)}>Close</Button>,
-            <Button type="primary">Update</Button>,
+            <Button type="primary" onClick={handleUpdate}>
+              Update
+            </Button>,
           ]}
         >
           <Form {...layout}>
