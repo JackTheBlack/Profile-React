@@ -15,6 +15,7 @@ function ApIRest() {
     nombre: "",
     dni: "",
   });
+  const [i, setI] = useState(0);
 
   ///////////////////////////////////////////////////////////////
   //let jsonStr = "";
@@ -59,11 +60,12 @@ function ApIRest() {
     try {
       axios
         .delete("https://60f96cb0ee56ef0017975dce.mockapi.io/contracts/" + id)
-        .then(() => alert("ID " + id + " eliminado con exito"));
+        .then(() => alert("el cliente " + id + " eliminado con exito"));
     } catch (e) {
       console.log("");
     }
     getContract5();
+    setI(0);
   };
 
   const handleUpdate = () => {
@@ -78,11 +80,14 @@ function ApIRest() {
       console.log("");
     }
     setModalUpdate(false);
+    setI(0);
   };
 
   useEffect(() => {
-    if (!modalUpdate) {
-      const response = getContract5();
+    if (!modalUpdate && i < 2) {
+      const algo = getContract5();
+      console.log("use effect");
+      setI(i + 1);
     }
 
     //  console.log(response.data);

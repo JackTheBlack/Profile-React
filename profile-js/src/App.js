@@ -6,9 +6,8 @@ import FOOTERLIST from "./components/Footer/FooterList.js";
 import ContactMe from "./components/ContactMe/ContactMe.js";
 import React from "react";
 import Slider from "./components/react_projects/slider_projects";
-
-const profile_photo =
-  "https://media-exp1.licdn.com/dms/image/C4D35AQEguHiBwSdYIQ/profile-framedphoto-shrink_200_200/0/1619635511019?e=1627182000&v=beta&t=zW0seAQ-YIPA1_0AMC5ouvBBHYzcoLDiGFaW10FZB_Q";
+import profileLK from "./assets/profileLK.jfif";
+const profile_photo =profileLK;
 
 function App() {
   return (

@@ -36,37 +36,51 @@ function ContactForm() {
   }; */
 
   return (
-    <div className="-form">
+    <div className="container">
       <form onSubmit={sendEmail}>
-        <label className="col-25">Name: </label>
-        <input className="col-75" type="text" name="user_name" /> <br />
-        <label className="col-25">*Email:</label>
-        <input
-          className="col-75"
-          required="true"
-          type="email"
-          name="user_email"
-          placeholder="name@example.com"
-        />
-        <br />
-        <label className="col-25">Message:</label>
-        <textarea
-          className="col-75"
-          class="form-control"
-          id="message"
-          rows="3"
-          name="message"
-        ></textarea>
-        <br />
-        <Button
-          type="danger"
-          shape="round"
-          size="small"
-          icon={<SendOutlined />}
-          htmlType="submit"
-        >
-          Send
-        </Button>
+        <div>
+          <div className="col-25">
+            <label>Name: </label>
+          </div>
+          <div className="col-75">
+            <input type="text" name="user_name" /> <br />
+          </div>
+        </div>
+        <div className="col-25">
+          <label>*Email:</label>
+        </div>
+
+        <div className="col-75">
+          <input
+            required="true"
+            type="email"
+            name="user_email"
+            placeholder="name@example.com"
+          />
+          <br />
+        </div>
+        <div className="col-25">
+          <label>Message:</label>
+        </div>
+        <div className="col-75">
+          <textarea
+            class="form-control"
+            id="message"
+            rows="3"
+            name="message"
+          ></textarea>
+        </div>
+        <div className="buttonSubmit">
+          <Button
+            type="danger"
+            shape="round"
+            size="small"
+            icon={<SendOutlined />}
+            htmlType="submit"
+          >
+            Send
+          </Button>
+        </div>
       </form>
     </div>
   );
