@@ -1,21 +1,33 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Form, Input, Button, Modal } from "antd";
+import { Form, Button, Input, Modal } from "antd";
 import { DeleteOutlined, FileSyncOutlined } from "@ant-design/icons";
 import FormAdd from "./AddApiForm.js";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  increaseCounter,
+  resetCounter,
+} from "../../redux/actions/counterActions.js";
+
 import "./components.css";
 
 function ApIRest() {
   ////////////////////////////////////////////////////////////////
-  const [id, setId] = useState("");
+  const count = useSelector((store) => store.counterReducer.count);
+  const dispatch = useDispatch();
+
   const [contrato, setContrato] = useState([]);
   const [modalUpdate, setModalUpdate] = useState(false);
   const { Item } = Form;
-  const [client, setClient] = useState({
+  const [cliente, setCliente] = useState({
     nombre: "",
     dni: "",
   });
-  const [i, setI] = useState(0);
+  const [auxClient, setAuxClient] = useState({
+    id: "",
+    nombre: "",
+    dni: "",
+  });
 
   ///////////////////////////////////////////////////////////////
   //let jsonStr = "";
@@ -23,8 +35,8 @@ function ApIRest() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setClient({ ...client, [name]: value });
-    console.log(client);
+    setCliente({ ...cliente, [name]: value });
+    console.log(cliente);
   };
 
   const layout = {
@@ -36,9 +48,10 @@ function ApIRest() {
     },
   };
 
-  const handleUpdateButton = (id) => {
+  const handleUpdateButton = (cliente) => {
+    setCliente(cliente);
+    console.log("el cliente seleccionado es " + cliente.nombre);
     setModalUpdate(true);
-    setId(id);
   };
 
   const getContract5 = async () => {
@@ -64,30 +77,29 @@ function ApIRest() {
     } catch (e) {
       console.log("");
     }
-    getContract5();
-    setI(0);
+    dispatch(resetCounter());
   };
 
   const handleUpdate = () => {
     try {
       axios
         .put(
-          "https://60f96cb0ee56ef0017975dce.mockapi.io/contracts/" + id,
-          client
+          "https://60f96cb0ee56ef0017975dce.mockapi.io/contracts/" + cliente.id,
+          cliente
         )
-        .then(() => alert("ID " + id + " actualizado con exito"));
+        .then(() => alert("ID " + cliente.id + " actualizado con exito"));
     } catch (e) {
       console.log("");
     }
+    dispatch(resetCounter());
     setModalUpdate(false);
-    setI(0);
   };
 
   useEffect(() => {
-    if (!modalUpdate && i < 2) {
+    if (!modalUpdate && count < 3) {
       const algo = getContract5();
-      console.log("use effect");
-      setI(i + 1);
+      console.log("el cunter esta en " + count);
+      dispatch(increaseCounter(1));
     }
 
     //  console.log(response.data);
@@ -116,7 +128,7 @@ function ApIRest() {
                       type="primary"
                       size="small"
                       icon={<FileSyncOutlined />}
-                      onClick={() => handleUpdateButton(i.id)}
+                      onClick={() => handleUpdateButton(i)}
                     >
                       {" "}
                     </Button>{" "}
@@ -142,7 +154,7 @@ function ApIRest() {
 
       <div>
         <Modal
-          title={"Client " + id}
+          title={"Client " + auxClient.id}
           visible={modalUpdate}
           footer={[
             <Button onClick={() => setModalUpdate(false)}>Close</Button>,
@@ -153,10 +165,10 @@ function ApIRest() {
         >
           <Form {...layout}>
             <Item onChange={handleChange} label="Id">
-              <Input readOnly name="id" value={id}></Input>
+              <Input readOnly name="id" value={cliente.id}></Input>
             </Item>
-            <Item label="Nombre">
-              <Input onChange={handleChange} name="nombre"></Input>
+            <Item onChange={handleChange} label="nombre">
+              <Input value={cliente && cliente.nombre} name="nombre"></Input>
             </Item>
             <Item
               onChange={handleChange}
@@ -167,7 +179,7 @@ function ApIRest() {
               ]}
               label="DNI"
             >
-              <Input name="dni"></Input>
+              <Input value={cliente && cliente.dni} name="dni"></Input>
             </Item>
           </Form>
         </Modal>

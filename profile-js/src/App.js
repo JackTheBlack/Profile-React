@@ -7,11 +7,15 @@ import ContactMe from "./components/ContactMe/ContactMe.js";
 import React from "react";
 import Slider from "./components/react_projects/slider_projects";
 import profileLK from "./assets/profileLK.jfif";
-const profile_photo =profileLK;
+import { Helmet } from "react-helmet";
+
+const profile_photo = profileLK;
 
 function App() {
   return (
     <div className="App">
+     
+      <head>Nicolas Ascona </head>
       <header className="App-header">
         <title>My Profile</title>
       </header>

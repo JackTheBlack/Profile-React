@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { Button, Modal, Form, Input } from "antd";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  increaseCounter,
+  resetCounter,
+} from "../../redux/actions/counterActions.js";
 
 function FormAdd() {
   /////////////////////////////////////////////////////////////////
 
+  const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
   const [client, setClient] = useState({
-    nombre: "",
+    name: "",
     dni: "",
   });
 
@@ -30,6 +36,7 @@ function FormAdd() {
         console.log(res);
         console.log(res.data);
       });
+    dispatch(resetCounter());
     setModal(false);
   };
 
@@ -59,17 +66,6 @@ function FormAdd() {
         ]}
       >
         <Form {...layout}>
-          <Item
-            onChange={handleChange}
-            rules={[
-              {
-                type: "number",
-              },
-            ]}
-            label="Id"
-          >
-            <Input name="id"></Input>
-          </Item>
           <Item label="Nombre">
             <Input onChange={handleChange} name="nombre"></Input>
           </Item>

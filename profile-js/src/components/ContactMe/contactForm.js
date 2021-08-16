@@ -70,6 +70,7 @@ function ContactForm() {
             name="message"
           ></textarea>
         </div>
+
         <div className="buttonSubmit">
           <Button
             type="danger"

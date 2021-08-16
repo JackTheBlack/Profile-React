@@ -4,7 +4,7 @@ import ContactForm from "./contactForm.js";
 function ContactMe() {
   return (
     <div className="Contact">
-      <h2>Contact</h2>
+      <h2>Contact Card</h2>
       <div>
         "Mail: Ascona.Nicolas@gmail.com"
         <br></br>
