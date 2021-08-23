@@ -5,8 +5,15 @@ import Calculadora from "./calculadora";
 import SORT from "./sort.js";
 import ApiRest from "./Api.js";
 import "./components.css";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  increaseCounter,
+  resetCounter,
+} from "../../redux/actions/counterActions.js";
 
 function Slider() {
+  const count = useSelector((store) => store.counterReducer.count);
+  const dispatch = useDispatch();
   const [showCalculadora, setShowCalculadora] = useState(true);
   const [showSort, setShowSort] = useState(false);
   const [disableCalculator, setDisableCalculator] = useState(true);
@@ -21,6 +28,7 @@ function Slider() {
     setShowCalculadora(false);
     setDisableCalculator(false);
     setDisableSort(false);
+    dispatch(resetCounter());
   };
 
   const calculadora = () => {
